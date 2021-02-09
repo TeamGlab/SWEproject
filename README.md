@@ -1,3 +1,3 @@
 # SWEproject
-![![TeamGlab](https://circleci.com/gh/teamglab/SWEproject.svg?style=svg)](<LINK>)
+![![TeamGlab](https://circleci.com/gh/TeamGlab/SWEproject.svg?style=svg)](https://app.circleci.com/pipelines/github/TeamGlab/SWEproject)
 
