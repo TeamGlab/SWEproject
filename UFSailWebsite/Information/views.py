@@ -10,6 +10,7 @@ def home(request):
 
 def contact(request):
     officers = Officer.objects.all()
+    # TODO: order officers properly
     context = {
         'current_item' : 'contact',
         'officers' : officers
