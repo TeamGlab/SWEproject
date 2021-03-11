@@ -1,0 +1,24 @@
+#footer-wrapper {
+  display : flex;
+  align-items : center;
+  height: 45px;
+}
+
+#home-footer {
+  text-align: center;
+  height: 45px;
+  background-color: #EEEEEE;
+  color: gray;
+}
+
+#recsport-logo {
+  float:right;
+  margin-right: 5px;
+}
+
+body {
+  /* account for floating nav bar - TODO: find a better way? */
+  padding-top: 56px;
+  /* account for footer */
+  margin-bottom: 45px; 
+}

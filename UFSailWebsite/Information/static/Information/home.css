@@ -1,0 +1,21 @@
+.carousel {
+  /* any dimensions are fine, it can be responsive with max-width */
+  width: max-width;
+  height: 400px;
+}
+
+.carousel-inner {
+  background-color: #B3DDF3 !important;
+}
+
+.carousel-item img {
+  position: center;
+  height: 400px;
+  object-fit: contain;
+}
+
+#home-blurb {
+  margin-top: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+}

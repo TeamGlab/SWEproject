@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'header+footer.css' %}">
+  <!-- For social media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  {% block stylesheets %}
+  {% endblock %}
+  <title>UF Sail | {% block pagetitle %}{% endblock %}</title>
+</head>
+
+<body>
+<header>
+  <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'images/logo.svg' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+      UF Sail Club
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {% if current_item == 'home' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item {% if current_item == 'contact' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+        </li>
+        <li class="nav-item {% if current_item == 'events' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'events' %}">Events</a>
+        </li>
+        <li class="nav-item {% if current_item == 'forms' %}active{% endif %}">
+          <a class="nav-link" href="{% url 'forms' %}">Contact Forms</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav ml-auto">
+          <li>
+            <a href="https://www.instagram.com/ufsail/" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fa fa-instagram fa-lg"></i></a>
+          <li>
+            <a href="https://www.facebook.com/GATORSAILING/" class="nav-link" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook-square fa-lg"></i></a>
+          </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<!-- Django templating - you can "subclass" this and insert whatever content you want -->
+{% block content %}
+<center>
+  <h2>Content goes here</h2>
+<center>
+{% endblock %}
+
+<!-- Footer -->
+<footer id="home-footer" class="fixed-bottom">
+  <div id="footer-wrapper">
+    <span class="container text-center">
+        <small>Copyright &copy; </small>
+      </span>
+      <span id="recsport-logo">
+        <img src="{% static 'images/recsports.png' %}" width="35" height="35" alt="Recsports logo">
+      </span>
+  </div>
+</footer>
+
+<!-- JS needed for bootstrap -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+</html>
