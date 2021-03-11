@@ -22,3 +22,9 @@ def events(request):
         'current_item' : 'events'
     }
     return render(request, 'Information/events.html', context)
+
+def forms(request):
+    context = {
+        'current_item' : 'forms'
+    }
+    return render(request, 'Information/forms.html', context)
