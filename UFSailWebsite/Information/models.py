@@ -8,6 +8,7 @@ class Officer(models.Model):
     role = models.CharField('role', max_length=50)
     email = models.CharField('email', max_length=50)
     bio = models.TextField('bio')
+    image = models.ImageField(upload_to='officer_profiles/') 
 
 
     # Get a human-readable representation of the object

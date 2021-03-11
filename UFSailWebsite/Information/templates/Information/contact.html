@@ -17,7 +17,7 @@ Contact
                     {% for officer in officers %}
                     <div class="col-auto mb-3">
                         <div class="card" style="width: 20rem; height: 100%;">
-                            <img class="card-img-top" src="{% static 'images/recsports.png' %}" alt="officer image">
+                            <img class="card-img-top" src="{{ officer.image.url }}" alt="officer image">
                             <div class="card-body">
                                 <h5 class="card-title"> {{ officer.fullname }} </h5>
                                 <h6 class="card-subtitle mb-2 text-muted"> {{ officer.role }} </h6>
