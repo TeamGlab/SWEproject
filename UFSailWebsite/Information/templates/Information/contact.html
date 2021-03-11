@@ -10,23 +10,31 @@ Contact
 {% endblock %}
 
 {% block content %}
+
     {% if officers %}
-        <div class="container-fluid">
-            <div class="row">
-                {% for officer in officers %}
-                <div class="col-sm">
-                    <center>
-                    <h1> {{ officer.fullname }} </h1>
-                    <h2> {{ officer.role }} </h2>
-                    <p> Email: <a href = "mailto: {{ officer.email }}">{{ officer.email }}</a></p>
-                    <p> {{ officer.bio }} </p>
-                    </center>
+            <div class="container-fluid mt-4">
+                <div class="row justify-content-center">
+                    {% for officer in officers %}
+                    <div class="col-auto mb-3">
+                        <div class="card" style="width: 20rem; height: 100%;">
+                            <img class="card-img-top" src="{% static 'images/recsports.png' %}" alt="officer image">
+                            <div class="card-body">
+                                <h5 class="card-title"> {{ officer.fullname }} </h5>
+                                <h6 class="card-subtitle mb-2 text-muted"> {{ officer.role }} </h6>
+                                <p class="card-text"> {{ officer.bio }} </p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">Email: <a href = "mailto: {{ officer.email }}">{{ officer.email }}</a></small>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
             </div>
-        </div>
-        
+            <!-- see https://stackoverflow.com/questions/48622893/how-can-i-make-a-card-deck-with-fixed-width-cards -->
     {% else %}
         <p>No officers.</p>
     {% endif %}
+
+
 {% endblock %}
