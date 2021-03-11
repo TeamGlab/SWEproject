@@ -1,9 +1,32 @@
 {% extends "Information/base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'Information/contact.css' %}">
+{% endblock %}
 
 {% block pagetitle %}
 Contact
 {% endblock %}
 
 {% block content %}
-    <h2> Contact info </h2>
+    {% if officers %}
+        <div class="container-fluid">
+            <div class="row">
+                {% for officer in officers %}
+                <div class="col-sm">
+                    <center>
+                    <h1> {{ officer.fullname }} </h1>
+                    <h2> {{ officer.role }} </h2>
+                    <p> Email: <a href = "mailto: {{ officer.email }}">{{ officer.email }}</a></p>
+                    <p> {{ officer.bio }} </p>
+                    </center>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+    {% else %}
+        <p>No officers.</p>
+    {% endif %}
 {% endblock %}

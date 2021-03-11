@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from .models import Officer
 
-# Create your views here.
+
 def home(request):
     context = {
         'current_item' : 'home'
@@ -8,8 +9,10 @@ def home(request):
     return render(request, 'Information/home.html', context)
 
 def contact(request):
+    officers = Officer.objects.all()
     context = {
-        'current_item' : 'contact'
+        'current_item' : 'contact',
+        'officers' : officers
     }
     return render(request, 'Information/contact.html', context)
 

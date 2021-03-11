@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Officer
 
-# Register your models here.
+# Make officer details editable by admins
+admin.site.register(Officer)
