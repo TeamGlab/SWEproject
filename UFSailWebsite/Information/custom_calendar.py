@@ -11,7 +11,7 @@ class Calendar(HTMLCalendar):
             return '<td class="%s">&nbsp;</td>' % self.cssclass_noday
         else:
             cssclass = "weekday" if 0 <= weekday <= 4 else "weekend"
-            return '<td class="%s">%d</td>' % (cssclass, day)
+            return '<td class="%s">%d <div class="event"> 1:00-2:00 text </div></td>' % (cssclass, day)
 
     def formatweek(self, theweek):
         """
