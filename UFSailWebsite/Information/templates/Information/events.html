@@ -1,9 +1,24 @@
 {% extends "Information/base.html" %}
+{% load static %}
 
 {% block pagetitle %}
 Events
 {% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'Information/events.css' %}">
+<link rel="stylesheet" href="{% static 'Information/calendar.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h2> Event info </h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-xs-12">
+            <h1>Event info here</h1>
+        </div>
+        <div class="col-lg-8 col-xs-12">
+            {{ calendar }}
+        </div>
+    </div>
+</div>
 {% endblock %}
