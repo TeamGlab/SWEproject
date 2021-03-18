@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Officer
+from .models import Officer, Event
 from .custom_calendar import Calendar
 import calendar
 from django.utils.safestring import mark_safe
@@ -22,9 +22,12 @@ def contact(request):
 def events(request):
     cal = Calendar(calendar.SUNDAY)
     html_cal = cal.formatmonth(2020, 3)
+
+    events = Event.objects.all()
     context = {
         'current_item' : 'events',
-        'calendar' : mark_safe(html_cal)
+        'calendar' : mark_safe(html_cal),
+        'upcoming_events' : events
     }
     return render(request, 'Information/events.html', context)
 

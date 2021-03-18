@@ -22,8 +22,10 @@ class Officer(models.Model):
 class Event(models.Model):
     title = models.CharField('event title', max_length=200)
     description = models.TextField('event description')
+    location = models.TextField('location', blank=True, default='')
     start = models.DateTimeField('start time')
     end = models.DateTimeField('end time')
+    link = models.URLField('optional link', max_length=200, blank=True, default='')
 
     # Get a human-readable representation of the object
     def __str__(self):
@@ -31,3 +33,12 @@ class Event(models.Model):
 
     def has_passed(self):
         return self.end <= timezone.now()
+
+    def get_day(self):
+        return 9
+
+    def get_month_abbr(self):
+        return 9
+
+    def get_time_string(self):
+        return 9

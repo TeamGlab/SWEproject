@@ -12,9 +12,38 @@ Events
 
 {% block content %}
 <div class="container-fluid">
-    <div class="row">
+    <div class="row align-items-start">
         <div class="col-lg-4 col-xs-12">
-            <h1>Event info here</h1>
+            <h2>Upcoming Events</h2>
+            {% for event in upcoming_events %}
+            <div class="row-lg-4">
+                <div class="card card-margin">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">{{ event.get_day_start }}</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                    <span class="widget-49-date-day">09</span>
+                                    <span class="widget-49-date-month">apr</span>
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">Location: Virtual</span>
+                                    <span class="widget-49-meeting-time">12:00 PM to 1:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="widget-49-meeting-points">
+                                <span class="widget-49-meeting-item"><span>A short description about the event.</span>
+                                <div>
+                                    <a class="meeting-link" href="">Meeting Link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>                
+            {% endfor %}
         </div>
         <div class="col-lg-8 col-xs-12">
             {{ calendar }}
