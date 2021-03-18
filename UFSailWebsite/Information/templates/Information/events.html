@@ -1,9 +1,121 @@
 {% extends "Information/base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{% static 'Information/events.css' %}">
+{% endblock %}
 
 {% block pagetitle %}
 Events
 {% endblock %}
 
 {% block content %}
-    <h2> Event info </h2>
+<!--<div class="container">
+    <div class="row align-items-start">
+        <div class="col">
+            <h3>Upcoming Events</h3>
+                <div class="row-auto">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Example Event 1</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Monday, March 14</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">6:00 PM to 7:00 PM</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Event Location</h6>
+                            <p class="card-text">A short description about the event.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col">
+            <h3>Calendar</h3>
+        </div>
+    </div>
+</div> -->
+
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col-auto">
+            <h2>Upcoming Events</h2>
+            <div class="row-lg-4">
+                <div class="card card-margin">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">General Body Meeting</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                    <span class="widget-49-date-day">09</span>
+                                    <span class="widget-49-date-month">apr</span>
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">Location: Virtual</span>
+                                    <span class="widget-49-meeting-time">12:00 PM to 1:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="widget-49-meeting-points">
+                                <span class="widget-49-meeting-item"><span>A short description about the event.</span>
+                                <div>
+                                    <a class="meeting-link" href="">Meeting Link</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-lg-4">
+                <div class="card card-margin">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">Sailing Event</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                    <span class="widget-49-date-day">10</span>
+                                    <span class="widget-49-date-month">mar</span>
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">Address of a place with water</span>
+                                    <span class="widget-49-meeting-time">12:00 PM to 2:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="widget-49-meeting-points">
+                                <span class="widget-49-meeting-item"><span>A longer description about the event that gives more details and takes up more space.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row-lg-4">
+                <div class="card card-margin">
+                    <div class="card-header no-border">
+                        <h5 class="card-title">General Body Meeting</h5>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="widget-49">
+                            <div class="widget-49-title-wrapper">
+                                <div class="widget-49-date-primary">
+                                    <span class="widget-49-date-day">17</span>
+                                    <span class="widget-49-date-month">mar</span>
+                                </div>
+                                <div class="widget-49-meeting-info">
+                                    <span class="widget-49-pro-title">Location: Virtual</span>
+                                    <span class="widget-49-meeting-time">12:00 PM to 1:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="widget-49-meeting-points">
+                                <span class="widget-49-meeting-item"><span>A short description about the event.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=col-auto>
+            <h2>Calendar</h2>
+            <p>Put the calendar here</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
