@@ -10,15 +10,14 @@
 Contact Forms
 {% endblock %}
 
-
-
 {% block content %}
 <h1>This is the forms page.</h1>
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <h2>Mailing List Form</h2>
-      <form>
+      <form method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -30,7 +29,8 @@ Contact Forms
 
     <div class="col-sm">
       <h2>Photo Submissions</h2>
-      <form>
+      <form method="post">
+        {% csrf_token %}
         <div class="form-group">
           <label for="exampleFormControlFile1">pdf/jpeg file input</label>
           <input type="file" class="form-control-file" id="exampleFormControlFile1" accept="image/png, image/jpeg">

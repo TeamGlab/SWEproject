@@ -24,6 +24,8 @@ def events(request):
     return render(request, 'Information/events.html', context)
 
 def forms(request):
+    if request.method == 'post':
+        print(request)
     context = {
         'current_item' : 'forms'
     }
