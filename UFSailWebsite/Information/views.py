@@ -22,6 +22,7 @@ def contact(request):
 def events(request):
     cal = Calendar(calendar.SUNDAY)
     html_cal = cal.formatmonth(2020, 3)
+    print(html_cal)
 
     events = Event.objects.all()
     context = {
