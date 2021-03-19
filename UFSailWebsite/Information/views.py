@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Officer, Event
 from .custom_calendar import Calendar
-import calendar
+from .event_provider import TestEventProvider, DatabaseEventProvider
 from django.utils.safestring import mark_safe
 
 def home(request):
@@ -20,9 +20,8 @@ def contact(request):
     return render(request, 'Information/contact.html', context)
 
 def events(request):
-    cal = Calendar(calendar.SUNDAY)
-    html_cal = cal.formatmonth(2020, 3)
-    print(html_cal)
+    cal = Calendar(DatabaseEventProvider())
+    html_cal = cal.formatmonth(2021, 3)
 
     events = Event.objects.all()
     context = {

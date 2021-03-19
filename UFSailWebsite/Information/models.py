@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+import pytz
+
 
 # Create your models here.
 # TODO: add model for officer, use to store officer bios, img, etc?
@@ -22,7 +25,7 @@ class Officer(models.Model):
 class Event(models.Model):
     title = models.CharField('event title', max_length=200)
     description = models.TextField('event description')
-    location = models.TextField('location', blank=True, default='')
+    location = models.CharField('location', max_length=100, blank=True, default='')
     start = models.DateTimeField('start time')
     end = models.DateTimeField('end time')
     link = models.URLField('optional link', max_length=200, blank=True, default='')
@@ -35,10 +38,17 @@ class Event(models.Model):
         return self.end <= timezone.now()
 
     def get_day(self):
-        return 9
+        return self.start.day
 
     def get_month_abbr(self):
-        return 9
+        return self.start.strftime('%b')
 
     def get_time_string(self):
-        return 9
+        timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
+        start = timezone.localtime(self.start)
+        end = timezone.localtime(self.end)
+        print(start.hour, start.strftime('%H'), end.hour)
+        s = f"{start.hour%12}:{start.strftime('%M %p')}"
+        e = f"{end.hour%12}:{end.strftime('%M %p')}"
+        return f'{s} to {e}'
+

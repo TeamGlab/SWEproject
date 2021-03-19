@@ -1,23 +1,35 @@
-from calendar import HTMLCalendar
+from calendar import HTMLCalendar, SUNDAY
 
 class Calendar(HTMLCalendar):
 
-    def formatday(self, day, weekday):
+    def __init__(self, event_provider):
+        self._event_provider = event_provider
+        super().__init__(SUNDAY) # display week starting on sunday
+
+    def formatday(self, day, weekday, month, year):
         """
         Return a day as a table cell.
         """
         if day == 0:
-            # day outside month
-            return '<td class="%s">&nbsp;</td>' % self.cssclass_noday
+            return '<td class="%s">&nbsp;</td>' % self.cssclass_noday # day outside month
         else:
             cssclass = "weekday" if 0 <= weekday <= 4 else "weekend"
-            return '<td class="%s">%d <div class="event"> 1:00-2:00 text </div></td>' % (cssclass, day)
+            events = self._event_provider.get_events(day, month, year)
+            cell = '<td class="%s">%d' % (cssclass, day)
+            if events is not None:
+                for event in events:
+                    print(event, event.title, str(event), event.get_time_string())
+                    cell += f'<div class="event"> {event.get_time_string()} </div>'
 
-    def formatweek(self, theweek):
+            cell += '</td>'
+            # empty day
+            return cell
+
+    def formatweek(self, theweek, month, year):
         """
         Return a complete week as a table row.
         """
-        s = ''.join(self.formatday(d, wd) for (d, wd) in theweek)
+        s = ''.join(self.formatday(d, wd, month, year) for (d, wd) in theweek)
         return '<tr>%s</tr>' % s
 
     def formatweekheader(self):
@@ -39,7 +51,7 @@ class Calendar(HTMLCalendar):
         month += self.formatweekheader()
         month += '\n'
         for week in self.monthdays2calendar(theyear, themonth):
-            month += self.formatweek(week)
+            month += self.formatweek(week, themonth, theyear)
             month += '\n'
         month += '</table>'
         month += '\n'
