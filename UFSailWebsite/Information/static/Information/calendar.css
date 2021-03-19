@@ -1,0 +1,52 @@
+.month {
+  width: 100%;
+  margin: auto;
+  font-size: 16px;
+  border-collapse:separate;
+  border-spacing: 5px;
+}
+
+.month tr {
+  /*border: 0.2px solid black;*/
+  padding: 5px;
+  text-align: center;
+}
+
+.month th {
+  padding: 5px;
+  font-size: 16px;
+  border-spacing: 10px;
+  /*background-color: #aaaa43*/
+}
+
+.month td {
+  vertical-align: top;
+  text-align: left;
+  width: 100px;
+  height: 100px;
+  padding: 5px 0px 0px 5px;
+  background-clip: padding-box;
+  /*background-color: #369;*/
+  /*border: 5px solid white;*/
+  border-radius: 5px;
+}
+
+.weekend {
+  background-color: #82c4e8
+}
+
+.weekday {
+  background-color: #B3DDF3
+}
+
+.event {
+  font-size: 12px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+}
+

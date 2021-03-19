@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from .models import Officer
-
+from .models import Officer, Event
+from .custom_calendar import Calendar
+from .event_provider import TestEventProvider, DatabaseEventProvider
+from django.utils.safestring import mark_safe
 
 def home(request):
     context = {
@@ -18,12 +20,20 @@ def contact(request):
     return render(request, 'Information/contact.html', context)
 
 def events(request):
+    cal = Calendar(DatabaseEventProvider())
+    html_cal = cal.formatmonth(2021, 3)
+
+    events = Event.objects.all()
     context = {
-        'current_item' : 'events'
+        'current_item' : 'events',
+        'calendar' : mark_safe(html_cal),
+        'upcoming_events' : events
     }
     return render(request, 'Information/events.html', context)
 
 def forms(request):
+    if request.method == 'POST':
+        print(request)
     context = {
         'current_item' : 'forms'
     }
