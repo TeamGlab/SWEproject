@@ -47,8 +47,12 @@ class Event(models.Model):
         timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
         start = timezone.localtime(self.start)
         end = timezone.localtime(self.end)
-        print(start.hour, start.strftime('%H'), end.hour)
         s = f"{start.hour%12}:{start.strftime('%M %p')}"
         e = f"{end.hour%12}:{end.strftime('%M %p')}"
         return f'{s} to {e}'
+
+    def calendar_display_text(self):
+        timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
+        start = timezone.localtime(self.start)
+        return f"{start.hour%12}:{start.strftime('%M%p')} {self.title}"
 

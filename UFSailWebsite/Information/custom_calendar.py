@@ -17,10 +17,10 @@ class Calendar(HTMLCalendar):
             events = self._event_provider.get_events(day, month, year)
             cell = '<td class="%s">%d' % (cssclass, day)
             if events is not None:
+                cell += '<ul>'
                 for event in events:
-                    print(event, event.title, str(event), event.get_time_string())
-                    cell += f'<div class="event"> {event.get_time_string()} </div>'
-
+                    cell += f'<li class="event"> {event.calendar_display_text()} </div>'
+                cell += '</ul>'
             cell += '</td>'
             # empty day
             return cell

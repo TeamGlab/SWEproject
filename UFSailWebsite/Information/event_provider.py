@@ -15,4 +15,4 @@ class TestEventProvider:
 class DatabaseEventProvider:
     def get_events(self, day, month, year):
         events = Event.objects.filter(start__year=year, start__month=month, start__day=day)
-        return events.order_by('start__minute')
+        return events.order_by('start__hour', 'start__minute')
