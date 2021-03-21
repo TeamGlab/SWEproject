@@ -46,6 +46,10 @@ Events
             {% endfor %}
         </div>
         <div class="col-lg-8 col-xs-12">
+            <div class="d-flex justify-content-between">
+                <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ prev }}">Prev</a>
+                <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ next }}">Next</a>
+            </div>
             {{ calendar }}
         </div>
     </div>
