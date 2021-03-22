@@ -45,5 +45,6 @@ def forms(request):
         form = EmailForm()
     context = {
         'current_item' : 'forms',
+        'form' : form
     }
-    return render(request, 'Information/forms.html', {'form' : form})
+    return render(request, 'Information/forms.html', context)
