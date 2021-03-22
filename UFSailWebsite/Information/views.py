@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Officer, Event
+from .models import Officer, Event, EmailMember
 from .custom_calendar import Calendar
 from .event_provider import TestEventProvider, DatabaseEventProvider
+from .forms import EmailForm
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils.safestring import mark_safe
 
 def home(request):
@@ -33,8 +35,15 @@ def events(request):
 
 def forms(request):
     if request.method == 'POST':
-        print(request)
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            p = EmailMember(email=email)
+            p.save()
+            return HttpResponseRedirect('/forms/')
+    else:
+        form = EmailForm()
     context = {
-        'current_item' : 'forms'
+        'current_item' : 'forms',
     }
-    return render(request, 'Information/forms.html', context)
+    return render(request, 'Information/forms.html', {'form' : form})

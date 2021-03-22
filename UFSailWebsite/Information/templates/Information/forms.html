@@ -11,18 +11,15 @@ Contact Forms
 {% endblock %}
 
 {% block content %}
-<h1>This is the forms page.</h1>
+<h1>Preliminary Forms</h1>
 <div class="container">
   <div class="row">
     <div class="col-sm">
       <h2>Mailing List Form</h2>
-      <form method="post">
+      <form action="/forms/" method="post">
         {% csrf_token %}
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted">Enter your email to sign up for our mailing list.</small>
-        </div>
+        {{ form }}
+        <small id="emailHelp" class="form-text text-muted">Enter your email to sign up for our mailing list.</small>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
@@ -37,13 +34,6 @@ Contact Forms
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
-    </div>
-    <div class="col-sm">
-      <h2>header 3</h2>
-    </div>
-    <div class="col-sm">
-      <h2>header 4</h2>
-      <p> lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text lots of text </p>
     </div>
   </div>
 </div>

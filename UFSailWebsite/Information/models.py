@@ -56,3 +56,7 @@ class Event(models.Model):
         start = timezone.localtime(self.start)
         return f"{start.hour%12}:{start.strftime('%M%p')} {self.title}"
 
+class EmailMember(models.Model):
+    email = models.EmailField()
+
+
