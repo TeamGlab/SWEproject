@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Officer, Event
 from .custom_calendar import Calendar
-from .event_provider import TestEventProvider, DatabaseEventProvider
+from .event_provider import DatabaseEventProvider
 from django.utils.safestring import mark_safe
 from datetime import date
 
