@@ -23,6 +23,8 @@ Events
       </div>
       <div class="modal-body">
         <div class="event-time"> ... </div>
+        <div class="event-location"> ... </div>
+        <div class="event-link"> ... </div>
         <div class="event-description"> ... </div>
       </div>
       <div class="modal-footer">
@@ -83,6 +85,8 @@ Events
     $("li[data-target='#eventModal']").on('click', function() {
         $(".modal-title").html($(this).attr('data-title'));
         $(".event-time").html($(this).attr('data-time'));
+        $(".event-location").html($(this).attr('data-location'));
+        $(".event-link").html($(this).attr('data-link'));
         $(".event-description").html($(this).attr('data-content'));
     }); 
     // see https://stackoverflow.com/questions/39876569/bootstrap-modal-building-a-dynamic-content

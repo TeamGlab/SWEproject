@@ -20,7 +20,8 @@ class Calendar(HTMLCalendar):
                 cell += '<ul>'
                 for event in events:
                     data = f'data-title="{event.title}" data-content="{event.description}" '
-                    data += f'data-time="{event.get_time_string()}" '
+                    data += f'data-time="{event.get_time_string()}" data-location="{event.location}" '
+                    data += f'data-link="{event.link}" '
                     cell += f'<li class="event" data-toggle="modal" data-target="#eventModal" {data}>'
                     cell += f'{event.calendar_display_text()} </li>'
                 cell += '</ul>'

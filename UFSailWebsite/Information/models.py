@@ -53,6 +53,6 @@ class Event(models.Model):
         return f"{to_standard(start.hour)}:{start.strftime('%M%p')} {self.title}"
 
 def to_standard(hour):
-    mod = hour%12
+    mod = hour % 12
     return 12 if mod == 0 else mod
 
