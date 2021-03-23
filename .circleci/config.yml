@@ -25,6 +25,8 @@ jobs:
             . venv/bin/activate
             mkdir test-results
             cd UFSailWebsite
+            python3 manage.py makemigrations
+            python3 manage.py migrate
             python3 manage.py test --verbosity=2 --with-xunit --xunit-file=../test-results/xunittest.xml
       - store_test_results:
           path: test-results
