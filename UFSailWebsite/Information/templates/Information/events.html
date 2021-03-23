@@ -43,24 +43,24 @@ Events
             <div class="row-lg-4">
                 <div class="card card-margin">
                     <div class="card-header no-border">
-                        <h5 class="card-title">{{ event.get_day }}</h5>
+                        <h5 class="card-title">{{ event.title }}</h5>
                     </div>
                     <div class="card-body pt-0">
                         <div class="widget-49">
                             <div class="widget-49-title-wrapper">
                                 <div class="widget-49-date-primary">
-                                    <span class="widget-49-date-day">09</span>
-                                    <span class="widget-49-date-month">apr</span>
+                                    <span class="widget-49-date-day">{{ event.get_day }}</span>
+                                    <span class="widget-49-date-month">{{ event.get_month_abbr }}</span>
                                 </div>
                                 <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">Location: Virtual</span>
-                                    <span class="widget-49-meeting-time">12:00 PM to 1:00 PM</span>
+                                    <span class="widget-49-pro-title">{{ event.location }}</span>
+                                    <span class="widget-49-meeting-time">{{ event.get_time_string }}</span>
                                 </div>
                             </div>
                             <div class="widget-49-meeting-points">
-                                <span class="widget-49-meeting-item"><span>A short description about the event.</span>
+                                <span class="widget-49-meeting-item"><span>{{ event.description }}</span>
                                 <div>
-                                    <a class="meeting-link" href="">Meeting Link</a>
+                                    <a class="meeting-link" href="{{ event.link }}">{{ event.link }}</a>
                                 </div>
                             </div>
                         </div>
