@@ -42,9 +42,6 @@ Events
             {% for event in upcoming_events %}
             <div class="row-lg-4">
                 <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">{{ event.title }}</h5>
-                    </div>
                     <div class="card-body pt-0">
                         <div class="widget-49">
                             <div class="widget-49-title-wrapper">
@@ -53,7 +50,8 @@ Events
                                     <span class="widget-49-date-month">{{ event.get_month_abbr }}</span>
                                 </div>
                                 <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">{{ event.location }}</span>
+                                    <h5 class="widget-49-title">{{ event.title }}</h5>
+                                    <span class="widget-49-location">{{ event.location }}</span>
                                     <span class="widget-49-meeting-time">{{ event.get_time_string }}</span>
                                 </div>
                             </div>
