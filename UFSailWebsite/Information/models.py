@@ -34,7 +34,7 @@ class Event(models.Model):
         return self.end <= timezone.now()
 
     def get_day(self):
-        return self.start.day
+        return f"{self.start.day:02d}"
 
     def get_month_abbr(self):
         return self.start.strftime('%b')
