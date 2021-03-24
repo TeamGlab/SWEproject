@@ -41,12 +41,24 @@
 
 .event {
   font-size: 12px;
+  cursor: pointer;
+}
+
+.event:hover {
+  font-weight: 500;
+}
+
+#calendar_navbar {
+  background-color: #2C67CC;
+  padding: 5px;
+  background-clip: padding-box;
+  border-radius: 5px;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  overflow: scroll;
+  /*overflow: scroll;*/
 }
 

@@ -11,6 +11,30 @@ Events
 {% endblock %}
 
 {% block content %}
+<!-- Modal -->
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="event-time"> ... </div>
+        <div class="event-location"> ... </div>
+        <div class="event-link"> ... </div>
+        <div class="event-description"> ... </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Content -->
 <div class="container-fluid">
     <div class="row align-items-start">
         <div class="col-lg-4 col-xs-12">
@@ -18,25 +42,23 @@ Events
             {% for event in upcoming_events %}
             <div class="row-lg-4">
                 <div class="card card-margin">
-                    <div class="card-header no-border">
-                        <h5 class="card-title">{{ event.get_day }}</h5>
-                    </div>
                     <div class="card-body pt-0">
                         <div class="widget-49">
                             <div class="widget-49-title-wrapper">
                                 <div class="widget-49-date-primary">
-                                    <span class="widget-49-date-day">09</span>
-                                    <span class="widget-49-date-month">apr</span>
+                                    <span class="widget-49-date-day">{{ event.get_day }}</span>
+                                    <span class="widget-49-date-month">{{ event.get_month_abbr }}</span>
                                 </div>
                                 <div class="widget-49-meeting-info">
-                                    <span class="widget-49-pro-title">Location: Virtual</span>
-                                    <span class="widget-49-meeting-time">12:00 PM to 1:00 PM</span>
+                                    <h5 class="widget-49-title">{{ event.title }}</h5>
+                                    <span class="widget-49-location">{{ event.location }}</span>
+                                    <span class="widget-49-meeting-time">{{ event.get_time_string }}</span>
                                 </div>
                             </div>
                             <div class="widget-49-meeting-points">
-                                <span class="widget-49-meeting-item"><span>A short description about the event.</span>
+                                <span class="widget-49-meeting-item"><span>{{ event.description }}</span>
                                 <div>
-                                    <a class="meeting-link" href="">Meeting Link</a>
+                                    <a class="meeting-link" href="{{ event.link }}">{{ event.link }}</a>
                                 </div>
                             </div>
                         </div>
@@ -46,8 +68,25 @@ Events
             {% endfor %}
         </div>
         <div class="col-lg-8 col-xs-12">
+            <div id="calendar_navbar" class="d-flex justify-content-between">
+                <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ prev }}">Prev</a>
+                <a class="btn btn-light btn-sm" href="{% url 'events' %}">Current</a>
+                <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ next }}">Next</a>
+            </div>
             {{ calendar }}
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $("li[data-target='#eventModal']").on('click', function() {
+        $(".modal-title").html($(this).attr('data-title'));
+        $(".event-time").html($(this).attr('data-time'));
+        $(".event-location").html($(this).attr('data-location'));
+        $(".event-link").html($(this).attr('data-link'));
+        $(".event-description").html($(this).attr('data-content'));
+    }); 
+    // see https://stackoverflow.com/questions/39876569/bootstrap-modal-building-a-dynamic-content
+</script>
 {% endblock %}

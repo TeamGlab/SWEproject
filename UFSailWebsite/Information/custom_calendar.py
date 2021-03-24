@@ -11,18 +11,21 @@ class Calendar(HTMLCalendar):
         Return a day as a table cell.
         """
         if day == 0:
-            return '<td class="%s">&nbsp;</td>' % self.cssclass_noday # day outside month
+            return f'<td class="{self.cssclass_noday}">&nbsp;</td>' # day outside month
         else:
             cssclass = "weekday" if 0 <= weekday <= 4 else "weekend"
+            cell = f'<td class="{cssclass}">{day}'
             events = self._event_provider.get_events(day, month, year)
-            cell = '<td class="%s">%d' % (cssclass, day)
             if events is not None:
                 cell += '<ul>'
                 for event in events:
-                    cell += f'<li class="event"> {event.calendar_display_text()} </div>'
+                    data = f'data-title="{event.title}" data-content="{event.description}" '
+                    data += f'data-time="{event.get_time_string()}" data-location="{event.location}" '
+                    data += f'data-link="{event.link}" '
+                    cell += f'<li class="event" data-toggle="modal" data-target="#eventModal" {data}>'
+                    cell += f'{event.calendar_display_text()} </li>'
                 cell += '</ul>'
             cell += '</td>'
-            # empty day
             return cell
 
     def formatweek(self, theweek, month, year):
