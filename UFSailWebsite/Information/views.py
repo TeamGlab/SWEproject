@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from .models import Officer, Event
+from .models import Officer, Event, EmailMember
 from .custom_calendar import Calendar
+from .forms import EmailForm
+from django.http import HttpResponseRedirect, HttpResponse
 from .event_provider import DatabaseEventProvider
 from django.utils.safestring import mark_safe
 from datetime import date
@@ -52,8 +54,16 @@ def events(request):
 
 def forms(request):
     if request.method == 'POST':
-        print(request)
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            p = EmailMember(email=email)
+            p.save()
+            return HttpResponseRedirect('/forms/')
+    else:
+        form = EmailForm()
     context = {
-        'current_item' : 'forms'
+        'current_item' : 'forms',
+        'form' : form
     }
     return render(request, 'Information/forms.html', context)
