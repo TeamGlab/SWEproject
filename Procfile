@@ -1,1 +1,1 @@
-web: gunicorn UFSailWebsite.wsgi --log-file -
+web: gunicorn --chdir UFSailWebsite UFSailWebsite.wsgi --log-file -
