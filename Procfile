@@ -1,1 +1,1 @@
-web: gunicorn UFSailWebsite.UFSailWebsite.wsgi --log-file -
+web: gunicorn UFSailWebsite.wsgi --log-file -
