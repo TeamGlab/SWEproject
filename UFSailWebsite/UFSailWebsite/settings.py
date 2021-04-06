@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_nose'
+    'django_nose',
+    'cloudinary',
+    'cloudinary_storage'
 ]
 
 # Use to get output for CircleCI
@@ -107,6 +109,14 @@ DATABASES = {
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+
+if not DEBUG:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ.get('CLOUD_NAME', ''),
+        'API_KEY': os.environ.get('CLOUD_API_KEY', ''),
+        'API_SECRET': os.environ.get('CLOUD_API_SECRET', ''),
+    }
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Password validation
