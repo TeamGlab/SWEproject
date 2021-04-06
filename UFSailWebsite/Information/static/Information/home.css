@@ -19,3 +19,15 @@
   margin-left: 50px;
   margin-right: 50px;
 }
+.btn-color{
+  background-color: #B3DDF3 !important;
+}
+
+.jumbotron {
+margin-bottom: 0px!important;
+padding-bottom: 20px;
+}
+
+.my-4{
+border-color: #2C67CC;
+}
