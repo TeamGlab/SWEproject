@@ -14,7 +14,7 @@ class Calendar(HTMLCalendar):
             return f'<td class="{self.cssclass_noday}">&nbsp;</td>' # day outside month
         else:
             cssclass = "weekday" if 0 <= weekday <= 4 else "weekend"
-            cell = f'<td class="{cssclass}">{day}'
+            cell = f'<td class="{cssclass}">{day}<div class="scrollable">'
             events = self._event_provider.get_events(day, month, year)
             if events is not None:
                 cell += '<ul>'
@@ -25,7 +25,7 @@ class Calendar(HTMLCalendar):
                     cell += f'<li class="event" data-toggle="modal" data-target="#eventModal" {data}>'
                     cell += f'{event.calendar_display_text()} </li>'
                 cell += '</ul>'
-            cell += '</td>'
+            cell += '</div></td>'
             return cell
 
     def formatweek(self, theweek, month, year):
