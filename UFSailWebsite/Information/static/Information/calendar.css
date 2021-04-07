@@ -42,6 +42,8 @@
 .event {
   font-size: 12px;
   cursor: pointer;
+  margin-right: .25rem;
+  margin-bottom: .5rem;
 }
 
 .event:hover {
