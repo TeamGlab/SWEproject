@@ -12,13 +12,27 @@
 }
 
 #recsport-logo {
-  float:right;
+  float: right;
   margin-right: 5px;
 }
 
+#admin-login {
+  text-align: right;
+  float:left;
+  margin-left: 10px;
+}
+
+#admin-login a {
+     color: #384863;
+}
+
+/*#admin-login a:hover {
+     color: #fa5705;
+}*/
+
 body {
   /* account for floating nav bar - TODO: find a better way? */
-  padding-top: 56px;
+  padding-top: 60px;
   /* account for footer */
-  margin-bottom: 45px; 
+  padding-bottom: 45px; 
 }
