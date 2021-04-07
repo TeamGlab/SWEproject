@@ -20,7 +20,7 @@ class Officer(models.Model):
 
 class Event(models.Model):
     title = models.CharField('event title', max_length=200)
-    description = models.TextField('event description')
+    description = models.TextField('event description', blank=True, default='')
     location = models.CharField('location', max_length=100, blank=True, default='')
     start = models.DateTimeField('start date/time')
     end = models.DateTimeField('end date/time')

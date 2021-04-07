@@ -40,7 +40,6 @@ Events
         <div class="col-lg-4 col-xs-12">
             <h2>Upcoming Events</h2>
             {% for event in upcoming_events %}
-            {% if event.has_passed == 0 %}
             <div class="row-lg-4">
                 <div class="card card-margin">
                     <div class="card-body pt-0">
@@ -68,7 +67,6 @@ Events
                     </div>
                 </div>
             </div>
-            {% endif %}
             {% endfor %}
         </div>
         <div class="col-lg-8 col-xs-12">
