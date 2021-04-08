@@ -3,8 +3,8 @@ from datetime import datetime, timedelta
 
 class DatabaseEventProvider:
     def get_events(self, day, month, year):
-        events = Event.objects.filter(start__year=year, start__month=month, start__day=day)
-        return events.order_by('start__hour', 'start__minute')
+        events = Event.objects.filter(date__year=year, date__month=month, date__day=day)
+        return events.order_by('starttime__hour', 'starttime__minute')
 
 # class TestEventProvider:
 #     def get_events(self, day, month, year):

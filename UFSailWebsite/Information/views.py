@@ -42,7 +42,7 @@ def events(request):
 
     # Filters to the 3 nearest upcoming events
     # Today's events that have already ended are still shown
-    events = Event.objects.filter(end__date__gte=date.today()).order_by('start')[:3]
+    events = Event.objects.filter(date__gte=date.today()).order_by('date', 'starttime')[:3]
 
     context = {
         'current_item' : 'events',
