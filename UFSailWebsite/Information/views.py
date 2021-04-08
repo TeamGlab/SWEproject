@@ -8,8 +8,18 @@ from django.utils.safestring import mark_safe
 from datetime import date
 
 def home(request):
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            p = EmailMember(email=email)
+            p.save()
+            return HttpResponseRedirect('')
+    else:
+        form = EmailForm()
     context = {
-        'current_item' : 'home'
+        'current_item' : 'home',
+        'form': form
     }
     return render(request, 'Information/home.html', context)
 
@@ -18,7 +28,7 @@ def contact(request):
     # TODO: order officers properly
     context = {
         'current_item' : 'contact',
-        'officers' : officers
+        'officers' : officers,
     }
     return render(request, 'Information/contact.html', context)
 
@@ -64,6 +74,6 @@ def forms(request):
         form = EmailForm()
     context = {
         'current_item' : 'forms',
-        'form' : form
+        'forms' : form
     }
     return render(request, 'Information/forms.html', context)

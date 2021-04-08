@@ -58,6 +58,15 @@ Home
   <p class="lead">If you are a new or experienced sailor and would like to get more involved with UF Club Sailing, follow the steps below:</p>
   <hr class="my-4">
   <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'forms' %}" role="button">Sign up for our mailing list</a>
+        <div class="card card-margin">
+        <h2 class="card-header"> Mailing List Form</h2>
+        <form class="card-body" action="/forms/" method="post">
+          {% csrf_token %}
+          {{ form }}
+          <small id="emailHelp" class="form-text text-muted" style="margin-bottom: 10px">Enter your email to sign up for our mailing list.</small>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        </div>
   <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'events' %}" role="button">Attend our upcoming events</a>
   <a type="button" class="btn btn-color btn-lg btn-block" href="https://www.facebook.com/GATORSAILING/" role="button">Message us on Facebook</a>
   <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'contact' %}" role="button">Contact our officers with any questions</a>
