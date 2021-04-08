@@ -56,3 +56,10 @@ def to_standard(hour):
     mod = hour % 12
     return 12 if mod == 0 else mod
 
+class EmailMember(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return f"{self.email}"
+
+
