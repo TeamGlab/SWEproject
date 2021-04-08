@@ -44,7 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_nose',
     'cloudinary',
-    'cloudinary_storage'
+    'cloudinary_storage',
+    
+    # for exporting
+    'import_export'
 ]
 
 # Use to get output for CircleCI
