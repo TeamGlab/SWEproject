@@ -57,14 +57,16 @@ Events
                             </div>
                             <div class="widget-49-meeting-points">
                                 <span class="widget-49-meeting-item"><span>{{ event.description }}</span>
+                                {% if event.link != "" %}
                                 <div>
-                                    <a class="meeting-link" href="{{ event.link }}">{{ event.link }}</a>
+                                    <a class="meeting-link" href="{{ event.link }}">Meeting Link</a>
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>                
+            </div>
             {% endfor %}
         </div>
         <div class="col-lg-8 col-xs-12">
