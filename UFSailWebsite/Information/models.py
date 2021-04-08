@@ -47,10 +47,10 @@ class Event(models.Model):
         e = f"{to_standard(end.hour)}:{end.strftime('%M %p')}"
         return f'{s} to {e}'
 
-    def calendar_display_text(self):
+    def calendar_display_time(self):
         timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
         start = timezone.localtime(self.start)
-        return f"{to_standard(start.hour)}:{start.strftime('%M%p')} {self.title}"
+        return f"{to_standard(start.hour)}:{start.strftime('%M%p')}"
 
 def to_standard(hour):
     mod = hour % 12
