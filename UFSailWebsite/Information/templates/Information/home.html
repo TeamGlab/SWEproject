@@ -41,23 +41,30 @@ Home
     </a>
 
 </div>
+
+<center>
 <div class="about-section">
 <div class="jumbotron jumbotron-fluid" style="background-color:#ffffff">
   <div class="container">
     <h1 class="display-4">ABOUT US</h1>
+      <hr class="my-4">
     <p class="lead">The UF Sailing Team is a 100% student-run club sailing team that races at both the regional and national level. UF's competitive sailing team also collaborates with leisure sailors.
     The purpose of this association shall be to encourage, teach, and advance sailing and racing among students and faculty: and to promote the sport and its high ideals in every possible way, both at the University of Florida and elsewhere.</p>
   </div>
 </div>
-
 </div>
+</center>
 
 <div class="jumbotron" style="background-color:#ffffff">
     <center>
   <h1 class="display-4">HOW TO JOIN</h1>
   <p class="lead">If you are a new or experienced sailor and would like to get more involved with UF Club Sailing, follow the steps below:</p>
   <hr class="my-4">
-  <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'forms' %}" role="button">Sign up for our mailing list</a>
+  <a type="button" class="btn btn-color btn-lg btn-block" href="#linked-form" role="button">Sign up for our mailing list</a>
+  <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'events' %}" role="button">Attend our upcoming events</a>
+  <a type="button" class="btn btn-color btn-lg btn-block" href="https://www.facebook.com/GATORSAILING/" role="button">Message us on Facebook</a>
+  <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'contact' %}" role="button">Contact our officers with any questions</a>
+          <a id = "linked-form">
         <div class="card card-margin">
         <h2 class="card-header"> Mailing List Form</h2>
         <form class="card-body" action="/forms/" method="post">
@@ -67,9 +74,7 @@ Home
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         </div>
-  <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'events' %}" role="button">Attend our upcoming events</a>
-  <a type="button" class="btn btn-color btn-lg btn-block" href="https://www.facebook.com/GATORSAILING/" role="button">Message us on Facebook</a>
-  <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'contact' %}" role="button">Contact our officers with any questions</a>
+        </a>
 
 
     </center>
