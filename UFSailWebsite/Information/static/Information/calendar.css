@@ -14,6 +14,13 @@ hr {
   margin-bottom: 2px;
 }
 
+#calendar_month {
+  color: #FFFFFF;
+  font-weight: 500;
+  display: inline-flex;
+  align-items : center;
+}
+
 .month {
   width: 100%;
   margin: auto;
@@ -32,6 +39,7 @@ hr {
   padding: 5px;
   font-size: 16px;
   border-spacing: 10px;
+  font-weight: normal;
   /*background-color: #aaaa43*/
 }
 
@@ -52,6 +60,10 @@ hr {
 
 .weekday {
   background-color: #B3DDF3
+}
+
+.today {
+  background-color: #FF9845
 }
 
 .event {

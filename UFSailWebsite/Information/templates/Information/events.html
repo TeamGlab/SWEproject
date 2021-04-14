@@ -75,9 +75,12 @@ Events
         </div>
         <div class="col-lg-8 col-xs-12">
             <div id="calendar_navbar" class="d-flex justify-content-between">
-                <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ prev }}">Prev</a>
-                <a class="btn btn-light btn-sm" href="{% url 'events' %}">Current</a>
+                <a class="btn btn-light btn-sm" href="{% url 'events' %}">Today</a>
+                <span id="calendar_month">{{ month }}</span>
+                <span class="d-flex">
+                <a class="btn btn-light btn-sm mx-1" href="{% url 'events' %}?month_offset={{ prev }}">Prev</a>
                 <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ next }}">Next</a>
+                </span>
             </div>
             {{ calendar }}
         </div>
