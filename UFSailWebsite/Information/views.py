@@ -15,7 +15,6 @@ def home(request):
 
 def contact(request):
     officers = Officer.objects.all()
-    # TODO: order officers properly
     context = {
         'current_item' : 'contact',
         'officers' : officers
@@ -29,7 +28,7 @@ def events(request):
     except ValueError:
         offset = 0
 
-    today = date.today() # TODO: localize?
+    today = date.today()
 
     # This looks gross, but mainly because python stores months 1-12 rather than 0-11
     # Works because python handles modulo and integer division on negative numbers 

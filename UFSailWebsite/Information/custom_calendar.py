@@ -1,5 +1,6 @@
 from calendar import HTMLCalendar, SUNDAY
 
+# Subclasses the built-in Python calendar
 class Calendar(HTMLCalendar):
 
     def __init__(self, event_provider):
@@ -16,7 +17,7 @@ class Calendar(HTMLCalendar):
             cssclass = "weekday" if 0 <= weekday <= 4 else "weekend"
             cell = f'<td class="{cssclass}">{day}<div class="scrollable">'
             events = self._event_provider.get_events(day, month, year)
-            if events is not None:
+            if events:
                 cell += '<ul>'
                 for event in events:
                     data = f'data-title="{event.title}" data-content="{event.description}" '

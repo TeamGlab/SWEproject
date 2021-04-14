@@ -32,20 +32,23 @@ ALLOWED_HOSTS = ['uf-club-sailing.herokuapp.com', '127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    # our apps
-    'Information',
-
     # default/utility
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
     'cloudinary',
-    'cloudinary_storage'
+    'cloudinary_storage',
+
+     # our apps
+    'Information',
 ]
+
+SITE_ID = 1
 
 # Use to get output for CircleCI
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

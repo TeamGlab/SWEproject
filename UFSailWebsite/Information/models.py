@@ -46,7 +46,7 @@ class Event(models.Model):
         return start.strftime('%b')
 
     def get_time_string(self):
-        timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
+        timezone.activate(pytz.timezone("US/Eastern"))
         start = timezone.make_aware(datetime.datetime.combine(self.date, self.starttime))
         end = timezone.make_aware(datetime.datetime.combine(self.date, self.endtime))
         s = f"{to_standard(start.hour)}:{start.strftime('%M %p')}"
@@ -54,7 +54,7 @@ class Event(models.Model):
         return f'{s} to {e}'
 
     def calendar_display_time(self):
-        timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
+        timezone.activate(pytz.timezone("US/Eastern"))
         start = timezone.make_aware(datetime.datetime.combine(self.date, self.starttime))
         return f"{to_standard(start.hour)}:{start.strftime('%M%p')}"
 
