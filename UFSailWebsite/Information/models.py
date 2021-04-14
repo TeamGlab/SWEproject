@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+import datetime
 import pytz
 
 class Officer(models.Model):
@@ -22,8 +23,9 @@ class Event(models.Model):
     title = models.CharField('event title', max_length=200)
     description = models.TextField('event description', blank=True, default='')
     location = models.CharField('location', max_length=100, blank=True, default='')
-    start = models.DateTimeField('start date/time')
-    end = models.DateTimeField('end date/time')
+    date = models.DateField('date')
+    starttime = models.TimeField('start time')
+    endtime = models.TimeField('end time')
     link = models.URLField('link (optional)', max_length=200, blank=True, default='')
 
     # Get a human-readable representation of the object
@@ -31,25 +33,28 @@ class Event(models.Model):
         return f"{self.title}: {self.description}"
 
     def has_passed(self):
-        return self.end <= timezone.now()
+        end = datetime.datetime.combine(self.date, self.endtime)
+        return end <= timezone.now()
 
     def get_day(self):
-        return f"{self.start.day:02d}"
+        start = datetime.datetime.combine(self.date, self.starttime)
+        return f"{start.day:02d}"
 
     def get_month_abbr(self):
-        return self.start.strftime('%b')
+        start = datetime.datetime.combine(self.date, self.starttime)
+        return start.strftime('%b')
 
     def get_time_string(self):
         timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
-        start = timezone.localtime(self.start)
-        end = timezone.localtime(self.end)
+        start = timezone.make_aware(datetime.datetime.combine(self.date, self.starttime))
+        end = timezone.make_aware(datetime.datetime.combine(self.date, self.endtime))
         s = f"{to_standard(start.hour)}:{start.strftime('%M %p')}"
         e = f"{to_standard(end.hour)}:{end.strftime('%M %p')}"
         return f'{s} to {e}'
 
     def calendar_display_text(self):
         timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
-        start = timezone.localtime(self.start)
+        start = timezone.make_aware(datetime.datetime.combine(self.date, self.starttime))
         return f"{to_standard(start.hour)}:{start.strftime('%M%p')} {self.title}"
 
 def to_standard(hour):
