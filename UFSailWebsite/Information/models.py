@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 import datetime
 import pytz
 
@@ -45,17 +46,23 @@ class Event(models.Model):
         return start.strftime('%b')
 
     def get_time_string(self):
-        timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
+        timezone.activate(pytz.timezone("US/Eastern"))
         start = timezone.make_aware(datetime.datetime.combine(self.date, self.starttime))
         end = timezone.make_aware(datetime.datetime.combine(self.date, self.endtime))
         s = f"{to_standard(start.hour)}:{start.strftime('%M %p')}"
         e = f"{to_standard(end.hour)}:{end.strftime('%M %p')}"
         return f'{s} to {e}'
 
-    def calendar_display_text(self):
-        timezone.activate(pytz.timezone("US/Eastern")) # TODO: localize?
+    def calendar_display_time(self):
+        timezone.activate(pytz.timezone("US/Eastern"))
         start = timezone.make_aware(datetime.datetime.combine(self.date, self.starttime))
-        return f"{to_standard(start.hour)}:{start.strftime('%M%p')} {self.title}"
+        return f"{to_standard(start.hour)}:{start.strftime('%M%p')}"
+
+    # Used for validation in admin forms
+    def clean(self):
+        if self.endtime <= self.starttime:
+            raise ValidationError("Event end time must be after the start time.")
+
 
 def to_standard(hour):
     mod = hour % 12
