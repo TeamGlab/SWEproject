@@ -26,13 +26,9 @@
   color: #384863;
 }
 
-/*#admin-login a:hover {
-     color: #fa5705;
-}*/
-
 body {
-  /* account for floating nav bar - TODO: find a better way? */
-  padding-top: 60px;
+  /* account for floating nav bar */
+  padding-top: 56px;
   /* account for footer */
   padding-bottom: 45px; 
 }
