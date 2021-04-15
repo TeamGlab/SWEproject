@@ -48,8 +48,11 @@ Home
   <div class="container">
     <h1 class="display-4">ABOUT US</h1>
       <hr class="my-4">
-    <p class="lead">The UF Sailing Team is a 100% student-run club sailing team that races at both the regional and national level. UF's competitive sailing team also collaborates with leisure sailors.
-    The purpose of this association shall be to encourage, teach, and advance sailing and racing among students and faculty: and to promote the sport and its high ideals in every possible way, both at the University of Florida and elsewhere.</p>
+    <p class="lead">Our primary focus is representing UF as we compete in SAISA and ICSA regattas around Florida and the Southeastern US. We also encourage both beginner and leisure sailors to come out to Lake Wauburg with the team as we host Learn to Sails and Leisure sailing events!
+        Feel free to reach out and we'd love to help you get shredding out on the water!</p>
+      <p class = "lead"> View UF Club Sailing scores:
+         <a href="https://scores.collegesailing.org/schools/florida/s20/"> https://scores.collegesailing.org/schools/florida/s20/</a>
+      </p>
   </div>
 </div>
 </div>
@@ -60,11 +63,13 @@ Home
   <h1 class="display-4">HOW TO JOIN</h1>
   <p class="lead">If you are a new or experienced sailor and would like to get more involved with UF Club Sailing, follow the steps below:</p>
   <hr class="my-4">
-  <a type="button" class="btn btn-color btn-lg btn-block" href="#linked-form" role="button">Sign up for our mailing list</a>
-  <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'events' %}" role="button">Attend our upcoming events</a>
-  <a type="button" class="btn btn-color btn-lg btn-block" href="https://www.facebook.com/GATORSAILING/" role="button">Message us on Facebook</a>
-  <a type="button" class="btn btn-color btn-lg btn-block" href="{% url 'contact' %}" role="button">Contact our officers with any questions</a>
-          <a id = "linked-form">
+
+  <a type="button" class="btn btn-color btn-lg btn-lg" href="#linked-form" role="button">Sign up for our mailing list</a>
+  <a type="button" class="btn btn-color btn-lg btn-lg" href="{% url 'events' %}" role="button">Attend our upcoming events</a>
+  <a type="button" class="btn btn-color btn-lg btn-lg" href="https://www.facebook.com/GATORSAILING/" role="button">Message us on Facebook</a>
+  <a type="button" class="btn btn-color btn-lg btn-lg" href="{% url 'contact' %}" role="button">Contact our officers with any questions</a>
+
+            <a id = "linked-form">
         <div class="card card-margin">
         <h2 class="card-header"> Mailing List Form</h2>
         <form class="card-body" action="/forms/" method="post">
