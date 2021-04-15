@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .event_provider import DatabaseEventProvider
 from django.utils.safestring import mark_safe
 from datetime import date
+from django.contrib import messages
 
 def home(request):
     if request.method == 'POST':
@@ -14,7 +15,8 @@ def home(request):
             email = form.cleaned_data['email']
             p = EmailMember(email=email)
             p.save()
-            return HttpResponseRedirect('')
+            messages.success(request, 'Email submitted!')
+            return HttpResponseRedirect('/')
     else:
         form = EmailForm()
     context = {

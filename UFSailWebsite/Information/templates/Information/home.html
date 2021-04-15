@@ -72,11 +72,20 @@ Home
             <a id = "linked-form">
         <div class="card card-margin">
         <h2 class="card-header"> Mailing List Form</h2>
-        <form class="card-body" action="/forms/" method="post">
+        <form class="card-body" action="" method="post">
           {% csrf_token %}
           {{ form }}
           <small id="emailHelp" class="form-text text-muted" style="margin-bottom: 10px">Enter your email to sign up for our mailing list.</small>
           <button type="submit" class="btn btn-primary">Submit</button>
+            <div>
+                {% if messages %}
+                <small id="confirmation" class="messages" style="color: #34ce57">
+                    {% for message in messages %}
+                    <text {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</text>
+                    {% endfor %}
+                </small>
+                {% endif %}
+            </div>
         </form>
         </div>
         </a>
