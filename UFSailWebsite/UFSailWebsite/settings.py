@@ -32,23 +32,24 @@ ALLOWED_HOSTS = ['uf-club-sailing.herokuapp.com', '127.0.0.1', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
-    # our apps
-    'Information',
-
     # default/utility
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_nose',
     'cloudinary',
     'cloudinary_storage',
-    
-    # for exporting
-    'import_export'
+    'import_export', # for exporting collected email addresses
+
+     # our apps
+    'Information',
 ]
+
+SITE_ID = 1
 
 # Use to get output for CircleCI
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
@@ -154,6 +155,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+TIME_INPUT_FORMATS = [
+    '%I:%M %p'
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

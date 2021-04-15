@@ -39,39 +39,48 @@ Events
     <div class="row align-items-start">
         <div class="col-lg-4 col-xs-12">
             <h2>Upcoming Events</h2>
-            {% for event in upcoming_events %}
-            <div class="row-lg-4">
-                <div class="card card-margin">
-                    <div class="card-body pt-0">
-                        <div class="widget-49">
-                            <div class="widget-49-title-wrapper">
-                                <div class="widget-49-date-primary">
-                                    <span class="widget-49-date-day">{{ event.get_day }}</span>
-                                    <span class="widget-49-date-month">{{ event.get_month_abbr }}</span>
+            {% if upcoming_events %}
+                {% for event in upcoming_events %}
+                <div class="row-lg-4">
+                    <div class="card card-margin">
+                        <div class="card-body pt-0">
+                            <div class="widget-49">
+                                <div class="widget-49-title-wrapper">
+                                    <div class="widget-49-date-primary">
+                                        <span class="widget-49-date-day">{{ event.get_day }}</span>
+                                        <span class="widget-49-date-month">{{ event.get_month_abbr }}</span>
+                                    </div>
+                                    <div class="widget-49-meeting-info">
+                                        <h5 class="widget-49-title">{{ event.title }}</h5>
+                                        <span class="widget-49-location">{{ event.location }}</span>
+                                        <span class="widget-49-meeting-time">{{ event.get_time_string }}</span>
+                                    </div>
                                 </div>
-                                <div class="widget-49-meeting-info">
-                                    <h5 class="widget-49-title">{{ event.title }}</h5>
-                                    <span class="widget-49-location">{{ event.location }}</span>
-                                    <span class="widget-49-meeting-time">{{ event.get_time_string }}</span>
-                                </div>
-                            </div>
-                            <div class="widget-49-meeting-points">
-                                <span class="widget-49-meeting-item"><span>{{ event.description }}</span>
-                                <div>
-                                    <a class="meeting-link" href="{{ event.link }}">{{ event.link }}</a>
+                                <div class="widget-49-meeting-points">
+                                    <span class="widget-49-meeting-item"><span>{{ event.description }}</span>
+                                    {% if event.link != "" %}
+                                    <div>
+                                        <a class="meeting-link" href="{{ event.link }}">Meeting Link</a>
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>                
-            {% endfor %}
+                {% endfor %}
+            {% else %}
+                <body>No upcoming events.</body>
+            {% endif %}
         </div>
         <div class="col-lg-8 col-xs-12">
             <div id="calendar_navbar" class="d-flex justify-content-between">
-                <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ prev }}">Prev</a>
-                <a class="btn btn-light btn-sm" href="{% url 'events' %}">Current</a>
+                <a class="btn btn-light btn-sm" href="{% url 'events' %}">Today</a>
+                <span id="calendar_month">{{ month }}</span>
+                <span class="d-flex">
+                <a class="btn btn-light btn-sm mx-1" href="{% url 'events' %}?month_offset={{ prev }}">Prev</a>
                 <a class="btn btn-light btn-sm" href="{% url 'events' %}?month_offset={{ next }}">Next</a>
+                </span>
             </div>
             {{ calendar }}
         </div>

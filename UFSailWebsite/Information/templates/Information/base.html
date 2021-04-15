@@ -61,12 +61,15 @@
 <!-- Footer -->
 <footer id="home-footer" class="fixed-bottom">
   <div id="footer-wrapper">
+    <span id="admin-login">
+      <small><a href="{% url 'admin:index' %}">Officer&nbspLogin</a></small>
+    </span>
     <span class="container text-center">
-        <small>Copyright &copy; </small>
-      </span>
-      <span id="recsport-logo">
-        <img src="{% static 'images/recsports.png' %}" width="35" height="35" alt="Recsports logo">
-      </span>
+        <!-- <small>Copyright &copy;</small> -->
+    </span>
+    <span id="recsport-logo">
+      <img src="{% static 'images/recsports.png' %}" width="35" height="35" alt="Recsports logo">
+    </span>
   </div>
 </footer>
 
