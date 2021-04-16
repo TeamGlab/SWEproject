@@ -1,5 +1,4 @@
 .carousel {
-  /* any dimensions are fine, it can be responsive with max-width */
   width: max-width;
   height: 400px;
 }
@@ -19,42 +18,52 @@
   margin-left: 50px;
   margin-right: 50px;
 }
+
+#join {
+  padding-top: 5px;
+}
+
 .btn-color{
   background-color: #B3DDF3 !important;
   margin-bottom: 5px;
+  -webkit-appearance: none; /* Stops Safari from being difficult: */
 }
 
 .jumbotron {
-margin-bottom: 0px!important;
-padding-bottom: 20px;
+  margin-bottom: 0px !important;
+  padding-bottom: 20px;
 }
 
-.my-4{
-border-color: #2C67CC;
+.my-4 {
+  border-color: #2C67CC;
 }
 
-body{
-    background: #F4F7FD;
+body {
+  background: #F4F7FD;
 }
 
 .card-margin {
-    margin-top: 1.875rem;
-    margin-bottom: 1.875rem;
+  margin-top: 1.875rem;
+  margin-bottom: 1.875rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .card {
-    border: 0;
-    box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
-    -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  border: 0;
+  box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
+  -ms-box-shadow: 0px 0px 10px 0px rgba(82, 63, 105, 0.1);
 }
+
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 24rem;
-  max-width: 24rem;
+  min-width: 20rem;
+  max-width: 23rem;
   word-wrap: break-word;
   background-color: #ffffff;
   background-clip: border-box;
@@ -62,22 +71,12 @@ body{
   border-radius: 8px;
 }
 
-.card .card-header.no-border {
-    border: 0;
-}
 .card .card-header {
-    background: none;
-    padding: 0 0.9375rem;
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 50px;
-}
-.card-header:first-child {
-    border-radius: calc(8px - 1px) calc(8px - 1px) 0 0;
-}
-
-.card-title {
-	margin-left: .5rem;
+  background: none;
+  padding: 0 0.9375rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
 }
