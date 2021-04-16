@@ -6,11 +6,23 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .event_provider import DatabaseEventProvider
 from django.utils.safestring import mark_safe
 from datetime import date
+from django.contrib import messages
 from calendar import month_name
 
 def home(request):
+    if request.method == 'POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            p = EmailMember(email=email)
+            p.save()
+            messages.success(request, 'Email submitted!')
+            return HttpResponseRedirect('/')
+    else:
+        form = EmailForm()
     context = {
-        'current_item' : 'home'
+        'current_item' : 'home',
+        'form': form
     }
     return render(request, 'Information/home.html', context)
 
@@ -18,7 +30,7 @@ def contact(request):
     officers = Officer.objects.all()
     context = {
         'current_item' : 'contact',
-        'officers' : officers
+        'officers' : officers,
     }
     return render(request, 'Information/contact.html', context)
 
@@ -55,19 +67,3 @@ def events(request):
     }
 
     return render(request, 'Information/events.html', context)
-
-def forms(request):
-    if request.method == 'POST':
-        form = EmailForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            p = EmailMember(email=email)
-            p.save()
-            return HttpResponseRedirect('/forms/')
-    else:
-        form = EmailForm()
-    context = {
-        'current_item' : 'forms',
-        'form' : form
-    }
-    return render(request, 'Information/forms.html', context)

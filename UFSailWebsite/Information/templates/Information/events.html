@@ -22,10 +22,10 @@ Events
         </button>
       </div>
       <div class="modal-body">
-        <div class="event-time"> ... </div>
         <div class="event-location"> ... </div>
-        <div class="event-link"> ... </div>
+        <div class="event-time"> ... </div>
         <div class="event-description"> ... </div>
+        <a class="event-link" href=""> ... </a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -35,7 +35,7 @@ Events
 </div>
 
 <!-- Content -->
-<div class="container-fluid">
+<div class="container-fluid mt-1">
     <div class="row align-items-start">
         <div class="col-lg-4 col-xs-12">
             <h2>Upcoming Events</h2>
@@ -93,6 +93,7 @@ Events
         $(".modal-title").html($(this).attr('data-title'));
         $(".event-time").html($(this).attr('data-time'));
         $(".event-location").html($(this).attr('data-location'));
+        $(".event-link").attr('href', $(this).attr('data-link'));
         $(".event-link").html($(this).attr('data-link'));
         $(".event-description").html($(this).attr('data-content'));
     }); 

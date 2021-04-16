@@ -111,6 +111,15 @@ body{
   margin-left: .5rem;
 }
 
+.event-time{
+color: #868d96;
+  font-size: 15px;
+}
+
+.event-location{
+font-weight: 500;
+}
+
 /*.widget-49 .widget-49-meeting-points .widget-49-meeting-item {
   display: list-item;
   color: #727686;

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_nose',
     'cloudinary',
     'cloudinary_storage',
+    'import_export', # for exporting collected email addresses
 
      # our apps
     'Information',

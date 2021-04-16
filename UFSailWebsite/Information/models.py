@@ -71,4 +71,7 @@ def to_standard(hour):
 class EmailMember(models.Model):
     email = models.EmailField()
 
+    def __str__(self):
+        return f"{self.email}"
+
 
