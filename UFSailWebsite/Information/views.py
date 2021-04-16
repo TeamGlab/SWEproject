@@ -67,19 +67,3 @@ def events(request):
     }
 
     return render(request, 'Information/events.html', context)
-
-def forms(request):
-    if request.method == 'POST':
-        form = EmailForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            p = EmailMember(email=email)
-            p.save()
-            return HttpResponseRedirect('/forms/')
-    else:
-        form = EmailForm()
-    context = {
-        'current_item' : 'forms',
-        'forms' : form
-    }
-    return render(request, 'Information/forms.html', context)
