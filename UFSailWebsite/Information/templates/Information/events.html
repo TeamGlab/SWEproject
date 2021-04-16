@@ -22,15 +22,10 @@ Events
         </button>
       </div>
       <div class="modal-body">
-        <div class="popup-location">
         <div class="event-location"> ... </div>
-          </div>
-          <div class="popup-time">
         <div class="event-time"> ... </div>
-          </div>
         <div class="event-description"> ... </div>
-        <a class="event-link"> ... </a>
-
+        <a class="event-link" href=""> ... </a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -89,6 +84,7 @@ Events
         $(".modal-title").html($(this).attr('data-title'));
         $(".event-time").html($(this).attr('data-time'));
         $(".event-location").html($(this).attr('data-location'));
+        $(".event-link").attr('href', $(this).attr('data-link'));
         $(".event-link").html($(this).attr('data-link'));
         $(".event-description").html($(this).attr('data-content'));
     }); 
