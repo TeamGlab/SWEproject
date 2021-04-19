@@ -25,7 +25,7 @@ class Event(models.Model):
     description = models.TextField('event description', blank=True, default='')
     location = models.CharField('location', max_length=100, blank=True, default='')
     date = models.DateField('date')
-    starttime = models.TimeField('start time')
+    starttime = models.TimeField('start time', help_text='Be sure to include AM/PM after the time')
     endtime = models.TimeField('end time')
     link = models.URLField('link (optional)', max_length=200, blank=True, default='')
 
@@ -60,6 +60,11 @@ class Event(models.Model):
 
     # Used for validation in admin forms
     def clean(self):
+        # some automatic validation occurs later, so in order to preserve default behavior
+        # we have to ignore uncleaned data 
+        if not (isinstance(self.endtime, datetime.time) and isinstance(self.starttime, datetime.time)):
+            return
+
         if self.endtime <= self.starttime:
             raise ValidationError("Event end time must be after the start time.")
 
