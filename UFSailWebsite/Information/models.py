@@ -35,7 +35,7 @@ class Event(models.Model):
 
     def has_passed(self):
         end = datetime.datetime.combine(self.date, self.endtime)
-        return end <= timezone.now()
+        return timezone.make_aware(end) <= timezone.now()
 
     def get_day(self):
         start = datetime.datetime.combine(self.date, self.starttime)
